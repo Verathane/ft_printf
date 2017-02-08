@@ -30,7 +30,7 @@ typedef struct	s_spec
 intmax_t    	handle_length_int(va_list *ap, t_spec *spec);
 uintmax_t    	handle_length_uni(va_list *ap, t_spec *spec);
 t_spec			*create_t_spec(void);
-t_spec			*set_flags(char **format, char *ptr, t_spec *spec);
+t_spec			*set_flags(char **format, char *ptr, t_spec *spec, va_list *ap);
 char			*set_pad(int len, t_spec *spec);
 char			*num_pad(char *str, t_spec *spec);
 char    	    *set_length(char *str, char **ptr);

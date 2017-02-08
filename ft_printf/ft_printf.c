@@ -42,7 +42,7 @@ int		handle_specifier(const char **format, va_list *ap)
 	len = 0;
 	ptr = NULL;
 	spec = create_t_spec();
-	spec = set_flags((char**)format, ptr, spec);
+	spec = set_flags((char**)format, ptr, spec, ap);
 	spec->spec = **format;
 	if (ft_strchr("OUD", spec->spec))
 		spec->length = ft_strdup("l");

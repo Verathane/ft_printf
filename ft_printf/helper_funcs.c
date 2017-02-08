@@ -83,7 +83,7 @@ char	*set_flag(char *flags, char flag)
 	return (flags);
 }
 
-t_spec	*set_flags(char **format, char *ptr, t_spec *spec)
+t_spec	*set_flags(char **format, char *ptr, t_spec *spec, va_list *ap)
 {
 	ptr = *format;
 	while (!is_specifier(*ptr))
@@ -92,16 +92,22 @@ t_spec	*set_flags(char **format, char *ptr, t_spec *spec)
 			spec->flags = set_flag(spec->flags, *ptr++);
 		else if (is_length(*ptr))
 			spec->length = set_length(*format, &ptr);
-		else if (ft_isdigit(*ptr) && *ptr != '0')
+		else if ((ft_isdigit(*ptr) && *ptr != '0') || *ptr == '*')
 		{
-			spec->width = ft_atoi(ptr);
-			while (ft_isdigit(*ptr))
+			if (*ptr == '*')
+				spec->width = va_arg(*ap, int);
+			else
+				spec->width = ft_atoi(ptr);
+			while (ft_isdigit(*ptr) || *ptr == '*')
 				ptr++;
 		}
 		else if (*ptr == '.')
 		{
-			spec->prec = ft_atoi(++ptr);
-			while (ft_isdigit(*ptr))
+			if (*(++ptr) == '*')
+				spec->prec = va_arg(*ap, int);
+			else
+				spec->prec = ft_atoi(ptr);
+			while (ft_isdigit(*ptr) || *ptr == '*')
 				ptr++;
 		}
 		else
