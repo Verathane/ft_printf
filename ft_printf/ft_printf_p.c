@@ -6,7 +6,7 @@
 /*   By: nbond <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:35:46 by nbond             #+#    #+#             */
-/*   Updated: 2017/01/25 20:22:59 by nbond            ###   ########.fr       */
+/*   Updated: 2017/02/07 16:31:45 by nbond            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int		ft_printf_p(void *ptr, t_spec *spec)
 	char			*hex;
 	unsigned long	address;
 
+	spec->flags[2] == '\0';
 	address = (unsigned long)ptr;
 	hex = to_hex(address);
 	spec->prec = -1;
