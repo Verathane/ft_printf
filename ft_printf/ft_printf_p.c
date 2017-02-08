@@ -6,7 +6,7 @@
 /*   By: nbond <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 18:35:46 by nbond             #+#    #+#             */
-/*   Updated: 2017/02/07 16:31:45 by nbond            ###   ########.fr       */
+/*   Updated: 2017/02/07 16:38:20 by nbond            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*to_hex(unsigned long n)
 	int				len;
 	unsigned long	tmp;
 
-	len = ft_baselen(n, 16) + 2;
+	len = ft_baselen(n, 16) + 1;
 	tmp = n;
 	hex_str = ft_strnew(len);
 	if (!hex_str)
@@ -42,7 +42,7 @@ int		ft_printf_p(void *ptr, t_spec *spec)
 	char			*hex;
 	unsigned long	address;
 
-	spec->flags[2] == '\0';
+
 	address = (unsigned long)ptr;
 	hex = to_hex(address);
 	spec->prec = -1;
