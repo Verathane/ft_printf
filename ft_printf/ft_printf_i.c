@@ -6,7 +6,7 @@
 /*   By: nbond <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 19:07:48 by nbond             #+#    #+#             */
-/*   Updated: 2017/01/26 01:00:26 by nbond            ###   ########.fr       */
+/*   Updated: 2017/02/07 16:29:39 by nbond            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int		ft_printf_i(intmax_t i, t_spec *spec)
 		str = &(str[1]);
 		spec->neg = 1;
 	}
-	if ((int)ft_strlen(str) < spec->prec || spec->prec == 0)
+	if ((int)ft_strlen(str) < spec->prec || spec->prec >= 0)
 		spec->flags[2] = '\0';
 	if (spec->prec == 0 && i == 0)
 		str = ft_strdup("\0");
