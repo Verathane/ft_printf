@@ -6,7 +6,7 @@
 /*   By: nbond <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 21:34:37 by nbond             #+#    #+#             */
-/*   Updated: 2017/01/26 23:33:27 by nbond            ###   ########.fr       */
+/*   Updated: 2017/02/08 13:04:00 by nbond            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,8 @@ int		handle_flags(char *str, t_spec *spec)
 		str = ft_strjoin(pad, str);
 	if (spec->flags[4] && spec->flags[2] && spec->num)
 	{
-		if (spec->spec == 'x')
-			str = ft_strjoin("0x", str);
-		else if (spec->spec == 'X')
-			str = ft_strjoin("0X", str);
+		if (spec->spec == 'x' || spec->spec == 'X')
+			str = ft_strjoin((spec->spec == 'x' ? "0x" : "0X"), str);
 		else if (spec->spec == 'o')
 			str = ft_strjoin("0", str);
 	}
@@ -94,19 +92,13 @@ t_spec	*set_flags(char **format, char *ptr, t_spec *spec, va_list *ap)
 			spec->length = set_length(*format, &ptr);
 		else if ((ft_isdigit(*ptr) && *ptr != '0') || *ptr == '*')
 		{
-			if (*ptr == '*')
-				spec->width = va_arg(*ap, int);
-			else
-				spec->width = ft_atoi(ptr);
+			spec->width = (*ptr == '*' ? va_arg(*ap, int) : ft_atoi(ptr));
 			while (ft_isdigit(*ptr) || *ptr == '*')
 				ptr++;
 		}
 		else if (*ptr == '.')
 		{
-			if (*(++ptr) == '*')
-				spec->prec = va_arg(*ap, int);
-			else
-				spec->prec = ft_atoi(ptr);
+			spec->prec = (*(++ptr) == '*' ? va_arg(*ap, int) : ft_atoi(ptr));
 			while (ft_isdigit(*ptr) || *ptr == '*')
 				ptr++;
 		}

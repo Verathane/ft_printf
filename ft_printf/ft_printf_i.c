@@ -6,7 +6,7 @@
 /*   By: nbond <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 19:07:48 by nbond             #+#    #+#             */
-/*   Updated: 2017/02/07 16:29:39 by nbond            ###   ########.fr       */
+/*   Updated: 2017/02/08 12:41:04 by nbond            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		ft_intmaxlen(intmax_t n)
 	return (i);
 }
 
-char		*ft_imaxtoa(intmax_t n)
+char	*ft_imaxtoa(intmax_t n)
 {
 	char			*str;
 	unsigned int	i;
@@ -66,7 +66,6 @@ char	*num_pad(char *str, t_spec *spec)
 	return (str);
 }
 
-#include <stdio.h>
 int		ft_printf_i(intmax_t i, t_spec *spec)
 {
 	char	*str;
@@ -74,10 +73,8 @@ int		ft_printf_i(intmax_t i, t_spec *spec)
 	spec->num = 1;
 	str = ft_imaxtoa(i);
 	if (i < 0)
-	{
 		str = &(str[1]);
-		spec->neg = 1;
-	}
+	spec->neg = (i < 0 ? 1 : 0);
 	if ((int)ft_strlen(str) < spec->prec || spec->prec >= 0)
 		spec->flags[2] = '\0';
 	if (spec->prec == 0 && i == 0)

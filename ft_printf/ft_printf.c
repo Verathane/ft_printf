@@ -6,7 +6,7 @@
 /*   By: nbond <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/18 17:04:56 by nbond             #+#    #+#             */
-/*   Updated: 2017/01/25 20:21:03 by nbond            ###   ########.fr       */
+/*   Updated: 2017/02/08 13:23:28 by nbond            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ int		handle_specifier(const char **format, va_list *ap)
 
 	len = 0;
 	ptr = NULL;
-	spec = create_t_spec();
-	spec = set_flags((char**)format, ptr, spec, ap);
+	spec = set_flags((char**)format, ptr, create_t_spec(), ap);
 	spec->spec = **format;
 	if (ft_strchr("OUD", spec->spec))
 		spec->length = ft_strdup("l");
@@ -57,7 +56,7 @@ int		handle_specifier(const char **format, va_list *ap)
 	else if (spec->spec == 'p')
 		len = ft_printf_p(va_arg(*ap, void*), spec);
 	else if (ft_strchr("oOuUxX", spec->spec))
-		len = ft_printf_uni(handle_length_uni(ap, spec), spec);
+		len = ft_printf_uni(handle_length_uni(ap, spec), spec, ptr);
 	else
 		ft_putstr("ERROR");
 	return (len);
