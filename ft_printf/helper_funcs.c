@@ -6,7 +6,7 @@
 /*   By: nbond <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/11 21:34:37 by nbond             #+#    #+#             */
-/*   Updated: 2017/02/08 13:04:00 by nbond            ###   ########.fr       */
+/*   Updated: 2017/02/09 14:14:40 by nbond            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ t_spec	*set_flags(char **format, char *ptr, t_spec *spec, va_list *ap)
 		if (is_flag(*ptr))
 			spec->flags = set_flag(spec->flags, *ptr++);
 		else if (is_length(*ptr))
-			spec->length = set_length(*format, &ptr);
+			ptr += ft_strlen((spec->length = set_length(ptr)));
 		else if ((ft_isdigit(*ptr) && *ptr != '0') || *ptr == '*')
 		{
 			spec->width = (*ptr == '*' ? va_arg(*ap, int) : ft_atoi(ptr));

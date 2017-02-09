@@ -6,7 +6,7 @@
 /*   By: nbond <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/27 22:48:05 by nbond             #+#    #+#             */
-/*   Updated: 2017/02/08 12:16:50 by nbond            ###   ########.fr       */
+/*   Updated: 2017/02/09 13:43:52 by nbond            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,14 @@ int			is_length(char c)
 	return (ft_strchr("hljz", c) ? 1 : 0);
 }
 
-char		*set_length(char *str, char **ptr)
+char		*set_length(char *str)
 {
-	(*ptr)++;
 	if (*str == 'h' && *(str + 1) == 'h')
-	{
-		(*ptr)++;
 		return (ft_strdup("hh"));
-	}
 	else if (*str == 'h')
 		return (ft_strdup("h"));
 	else if (*str == 'l' && *(str + 1) == 'l')
-	{
-		(*ptr)++;
 		return (ft_strdup("ll"));
-	}
 	else if (*str == 'l')
 		return (ft_strdup("l"));
 	else if (*str == 'j')

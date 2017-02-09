@@ -6,7 +6,7 @@
 /*   By: nbond <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/10 00:10:50 by nbond             #+#    #+#             */
-/*   Updated: 2017/02/08 12:34:30 by nbond            ###   ########.fr       */
+/*   Updated: 2017/02/09 13:45:42 by nbond            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_spec			*create_t_spec(void);
 t_spec			*set_flags(char **format, char *ptr, t_spec *spec, va_list *ap);
 char			*set_pad(int len, t_spec *spec);
 char			*num_pad(char *str, t_spec *spec);
-char			*set_length(char *str, char **ptr);
+char			*set_length(char *str);
 char			*ft_imaxtoa(intmax_t n);
 char			*to_lower(char *str);
 int				is_length(char c);

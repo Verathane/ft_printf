@@ -6,7 +6,7 @@
 /*   By: nbond <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/17 09:54:08 by nbond             #+#    #+#             */
-/*   Updated: 2017/02/08 13:10:39 by nbond            ###   ########.fr       */
+/*   Updated: 2017/02/09 14:11:34 by nbond            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*ft_uintmaxtoa_base(uintmax_t value, int base)
 	uintmax_t	rem;
 
 	i = ft_baselen(value, base);
-	str = (char*)malloc(sizeof(char) * i--);
+	str = ft_strnew(i--);
 	if (base == 10 || value < 2)
 		return (ft_uintmaxtoa(value));
 	while (value > 0)
@@ -83,8 +83,7 @@ int		ft_printf_uni(uintmax_t i, t_spec *spec, char *str)
 		str = num_pad(str, spec);
 	if (spec->flags[4] && !spec->flags[2] && ft_strchr("xX", spec->spec) && i)
 		str = ft_strjoin("0X", str);
-	else if (spec->flags[4] && !spec->flags[2] && \
-			ft_strchr("oO", spec->spec) && i)
+	else if (spec->flags[4] && !spec->flags[2] && ft_strchr("oO", spec->spec))
 		str = ft_strjoin("0", str);
 	else if (spec->flags[4] && ft_strchr("xX", spec->spec))
 		spec->width -= 2;
